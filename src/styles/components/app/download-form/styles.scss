@@ -1,0 +1,31 @@
+@use "../../../variables";
+.download-form {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5em;
+
+  .download-button {
+    width: 100%;
+    margin-left: 10px;
+    background-color: variables.$dark;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:disabled {
+      background-color: variables.$gray-2;
+      color: variables.$dark;
+    }
+  }
+}
+
+.error-message {
+  margin-top: 1em;
+  color: variables.$red-error;
+  font-weight: 500;
+  opacity: 0.7;
+  font-size: 1rem;
+}

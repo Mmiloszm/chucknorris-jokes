@@ -1,0 +1,47 @@
+@use "../../../../variables";
+.value-input-wrapper {
+  background-color: variables.$gray-2;
+  padding: 1em;
+  height: 3.5em;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  .value-input {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    width: 3em;
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    outline: none;
+    margin: 0;
+    text-align: center;
+  }
+  .value-button {
+    border-radius: 100px;
+    border: 1px solid variables.$dark;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+
+    .value-button-icon {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 4px;
+
+      color: variables.$dark;
+      line-height: 0.5em;
+      text-align: center;
+      background-color: transparent;
+    }
+  }
+
+  &:focus-within .value-button {
+    border: none;
+    font-weight: 600;
+    background-color: variables.$gray-1;
+  }
+}
+.error {
+  background-color: variables.$red-error;
+}

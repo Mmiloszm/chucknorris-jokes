@@ -1,0 +1,46 @@
+@use "./variables";
+@use "./mixins" as *;
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  background-color: variables.$gray-2;
+
+  @include mobile {
+    background-color: variables.$white;
+  }
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 400 700;
+}
+
+@font-face {
+  font-family: Inter;
+  src: local(Inter-SemiBoldItalic),
+    url("src/assets/fonts/Inter-SemiBoldItalic.woff2") format("woff2"),
+    url("src/assets/fonts/Inter-SemiBoldItalic.woff") format("woff"),
+    url("src/assets/fonts/Inter-SemiBoldItalic.otf") format("opentype");
+  font-weight: 600;
+  font-style: italic;
+  font-stretch: normal;
+}
