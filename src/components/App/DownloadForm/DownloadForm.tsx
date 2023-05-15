@@ -40,6 +40,20 @@ const valueReducer = (state: ValueState, action: ValueAction) => {
 const DownloadForm = () => {
   const [value, valueDispatch] = useReducer(valueReducer, { value: 0 });
 
+  const handleDownloadJokes = (jokes: string[]) => {
+    const text = jokes.join("\n");
+    const element = document.createElement("a");
+    const file = new Blob([text], { type: "text/plain" });
+
+    element.href = URL.createObjectURL(file);
+    element.download = "very_funny_jokes.txt";
+    document.body.appendChild(element);
+    element.click();
+
+    document.body.removeChild(element);
+    URL.revokeObjectURL(element.href);
+  };
+
   return (
     <>
       <form className="download-form">
@@ -49,8 +63,10 @@ const DownloadForm = () => {
           className="download-button"
           disabled={value.value < 1 || value.value > 100}
           onClick={async () => {
-            const jokes = await getMultipleJokes({ numberOfJokes: 10 });
-            console.log(jokes);
+            const jokes = await getMultipleJokes({
+              numberOfJokes: value.value,
+            });
+            handleDownloadJokes(jokes);
           }}
         >
           Save Jokes

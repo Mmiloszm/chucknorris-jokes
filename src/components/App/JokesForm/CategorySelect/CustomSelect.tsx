@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { getCategories } from "lib/api";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Select, {
   ControlProps,
   CSSObjectWithLabel,
@@ -7,6 +8,7 @@ import Select, {
   MenuProps,
   OptionProps,
 } from "react-select";
+import { selectedOptionType, Option } from "../JokesForm";
 
 const customStyles = {
   control: (
@@ -124,28 +126,25 @@ const customStyles = {
   }),
 };
 
-type Option = {
-  value: string;
-  label: string;
+type CategorySelectPropsType = {
+  category: selectedOptionType;
+  setCategory: Dispatch<SetStateAction<selectedOptionType>>;
 };
 
-const options: Option[] = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
+const CategorySelect = ({ category, setCategory }: CategorySelectPropsType) => {
+  const [options, setOptions] = useState<Option[]>([]);
 
-type selectedOptionType = {
-  selectedOption: Option | null;
-};
-
-const CategorySelect = () => {
-  const [category, setCategory] = useState<selectedOptionType>({
-    selectedOption: null,
-  });
   const [isOpen, setIsOpen] = useState(false);
 
   const placeholder = isOpen ? "Select category" : "Categories";
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const fetched = await getCategories();
+      setOptions(fetched);
+    };
+    fetchCategories();
+  }, []);
 
   const handleMenuOpen = () => {
     setIsOpen(true);

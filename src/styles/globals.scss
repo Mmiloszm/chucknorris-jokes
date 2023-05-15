@@ -37,9 +37,9 @@ ul {
 @font-face {
   font-family: Inter;
   src: local(Inter-SemiBoldItalic),
-    url("src/assets/fonts/Inter-SemiBoldItalic.woff2") format("woff2"),
-    url("src/assets/fonts/Inter-SemiBoldItalic.woff") format("woff"),
-    url("src/assets/fonts/Inter-SemiBoldItalic.otf") format("opentype");
+    url("@/assets/fonts/Inter-SemiBoldItalic.woff2") format("woff2"),
+    url("@/assets/fonts/Inter-SemiBoldItalic.woff") format("woff"),
+    url("@/assets/fonts/Inter-SemiBoldItalic.otf") format("opentype");
   font-weight: 600;
   font-style: italic;
   font-stretch: normal;
